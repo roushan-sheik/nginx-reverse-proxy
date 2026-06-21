@@ -1,23 +1,22 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
   "license": "ISC",
-  "author": "",
   "type": "commonjs",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx watch app/server.ts",
-    "start": "tsx app/server.ts"
+    "build": "tsc",
+    "start:one": "node dist/app_one/server.js",
+    "start:two": "node dist/app_two/server.js",
+    "dev:one": "tsx watch app_one/server.ts",
+    "dev:two": "tsx watch app_two/server.ts"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/node": "^26.0.0",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "tsx": "^4.22.4"
   },
   "dependencies": {
-    "express": "^5.2.1",
-    "tsx": "^4.22.4"
+    "express": "^5.2.1"
   }
 }
