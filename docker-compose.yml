@@ -3,15 +3,21 @@ version: "3.8"
 services:
   app_one:
     build: .
+    env_file:
+      - .env
     environment:
-      - INSTANCE_NAME=app_one
+      - PORT=${APP_ONE_PORT}
+    command: ./node_modules/.bin/tsx app_one/server.ts
     networks:
       - backend_network
 
   app_two:
     build: .
+    env_file:
+      - .env
     environment:
-      - INSTANCE_NAME=app_two
+      - PORT=${APP_TWO_PORT}
+    command: ./node_modules/.bin/tsx app_two/server.ts
     networks:
       - backend_network
 
