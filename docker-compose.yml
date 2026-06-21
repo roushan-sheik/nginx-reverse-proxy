@@ -5,7 +5,7 @@ services:
       - .env
     environment:
       - PORT=${APP_ONE_PORT}
-    command: npm run start:one
+    command: node dist/app_one/server.js
     networks:
       - backend_network
 
@@ -15,7 +15,7 @@ services:
       - .env
     environment:
       - PORT=${APP_TWO_PORT}
-    command: npm run start:two
+    command: node dist/app_two/server.js
     networks:
       - backend_network
 
