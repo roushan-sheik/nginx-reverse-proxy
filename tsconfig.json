@@ -13,12 +13,10 @@
     "sourceMap": false
   },
   "include": [
-    "app_one/**/*.ts",
-    "app_two/**/*.ts"
+    "app/**/*.ts"
   ],
   "exclude": [
     "node_modules",
-    "dist",
-    "app"
+    "dist"
   ]
 }

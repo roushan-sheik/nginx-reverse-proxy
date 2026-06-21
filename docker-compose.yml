@@ -1,36 +1,31 @@
+version: "3.8"
+
 services:
-  app_one:
-    build: .
-    env_file:
-      - .env
-    environment:
-      - PORT=${APP_ONE_PORT}
-    command: node dist/app_one/server.js
-    networks:
-      - backend_network
+    app_one:
+      build: .
+      environment:
+       - INSTANCE_NAME=app_one
+       - PORT=5010
 
-  app_two:
-    build: .
-    env_file:
-      - .env
-    environment:
-      - PORT=${APP_TWO_PORT}
-    command: node dist/app_two/server.js
-    networks:
-      - backend_network
+    app_two:
+      build: .
+      environment:
+       - INSTANCE_NAME=app_two
+       - PORT=5020
 
-  nginx:
-    image: nginx:stable
-    ports:
-      - "8080:80"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-    depends_on:
-      - app_one
-      - app_two
-    networks:
-      - backend_network
-
-networks:
-  backend_network:
-    driver: bridge
+    app_three:
+      build: .
+      environment:
+       - INSTANCE_NAME=app_three
+       - PORT=5030
+    
+    nginx:
+      image: nginx:latest 
+      ports:
+        - "8080:80"
+      volumes:
+        - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      depends_on:
+        - app_one
+        - app_two
+        - app_three

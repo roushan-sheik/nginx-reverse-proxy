@@ -5,10 +5,8 @@
   "type": "commonjs",
   "scripts": {
     "build": "tsc",
-    "start:one": "node dist/app_one/server.js",
-    "start:two": "node dist/app_two/server.js",
-    "dev:one": "tsx watch app_one/server.ts",
-    "dev:two": "tsx watch app_two/server.ts"
+    "dev": "tsx watch app/server.ts",
+    "start": "node dist/app/server.js"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",

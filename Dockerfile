@@ -1,5 +1,5 @@
 # ---- Build stage ----
-FROM node:20-alpine AS builder
+FROM node:20-slim AS builder
 WORKDIR /app
 
 COPY package*.json ./
@@ -9,7 +9,7 @@ COPY . .
 RUN npm run build
 
 # ---- Production stage ----
-FROM node:20-alpine
+FROM node:20-slim
 WORKDIR /app
 
 ENV NODE_ENV=production
@@ -19,4 +19,4 @@ RUN npm ci --omit=dev
 
 COPY --from=builder /app/dist ./dist
 
-CMD ["node", "dist/app_one/server.js"]
+CMD ["node", "dist/app/server.js"]
